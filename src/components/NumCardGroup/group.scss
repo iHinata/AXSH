@@ -1,0 +1,8 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.numcardgroup {
+  display: inline-block;
+  .numcard:not(:last-child) {
+    margin-right: 6px;
+  }
+}

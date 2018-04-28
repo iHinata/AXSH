@@ -1,0 +1,453 @@
+@import '~sass/settings';
+@import '~sass/tools';
+
+
+
+.big-screen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: url('~@assets/images/schoolm-bg.png') no-repeat;
+    background-size: cover;
+    
+    .header {
+        padding: 30px;
+        @include clearfix;
+        * {
+            vertical-align: middle;
+            padding: 0 $paddingSmall;
+        }
+        .header__logo {
+            width: 180px;
+        }
+        .header__title {
+            font-size: $fontSizeLarge * 1.4;
+            color: $primary;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            text-align: center; 
+
+        }
+        .timedisplay {
+            float: right;
+        }
+    }
+      
+    color: #fff;
+    min-width: 1200px;
+    margin: 0 auto;
+    .bs-t {
+        font-family: PingFangSC-Regular;
+        .school-section-bg {
+            background-image: linear-gradient(-179deg, #0086E3 0%, rgba(0,113,221,0.91) 31%, rgba(0,89,214,0.54) 60%, rgba(0,70,209,0.33) 96%);
+            box-shadow: 0 12px 25px 0 rgba(1,19,37,0.30);
+        }
+        // 
+        .school-num {
+            height: 100%;
+            padding: 8%;
+            font-size: 14px;
+            letter-spacing: 0;
+            line-height: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .school-num-div-bg {
+                width: 100%;
+                background: url('~@assets/images/schoolm-bg1.png') no-repeat;
+                // background: url('/assets/icon/schoolNum-bg1.png') no-repeat;
+                background-size: cover;
+                font-family: PingFangSC-Medium;
+                .school-num-p {
+                    padding: 30px 0 0 20px;
+                    .school-num-span {
+                        display: inline-block;
+                        margin-top: 8px;
+                        font-size: 90px;
+                        letter-spacing: 0;
+                        line-height: 80px;
+                        text-shadow: 0 4px 10px rgba(0,0,0,0.30);
+                        font-family: DINEngschrift-Alternate;
+                    }
+                }
+            }
+        }
+        
+        .click-num {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .click-num-div { 
+                margin-top: 5%;
+                .click-num-div-t {
+                    font-size: 13px;
+                    color: #FFFFFF;
+                    letter-spacing: 0;
+                    line-height: 13px;
+                    margin-bottom: 10px;
+                    
+                }
+                .numcard .numcard__item {
+                    width: 0.5em;
+                }
+                .numcard .numcard__item .numcard__num {
+                    -webkit-text-fill-color: #fff;
+                    font-family: DINEngschrift-Alternate;
+                    background: rgba(0,0,0,0.2);
+                }
+            }
+        }
+        .nums {
+            width: 100%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 13px;
+            letter-spacing: 0;
+            line-height: 13px;
+            table {
+                padding: 10% 20%;
+                height: 100%;
+                table-layout: auto;
+                tr {
+                    .nums-p {
+                        margin-bottom: 0;
+                    }
+                    div {
+                        text-indent: 20px;
+                    }
+                    .font50 {
+                        font-size: 52px;
+                        line-height: 42px;
+                        text-align: right;
+                        font-family: DINEngschrift-Alternate;
+                    }
+                    .font36 {
+                        font-size: 36px;
+                        line-height: 36px;
+                        text-align: right;
+                        font-family: DINEngschrift-Alternate;
+                    }
+                }
+            }
+        }
+
+        .column3 {
+            width: 100%;
+        }
+        .column3-table {
+            margin: 0 auto;
+            margin-top: 3%;
+            border-collapse: collapse;
+            table-layout: auto;
+            width: 90%;
+            height: 90%;
+            font-size: 18px;
+            line-height: 18px;
+            tr {
+                width: 100%;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                &:first-child {
+                    border-bottom: none;
+                    // background-image: linear-gradient(-180deg, rgba(37,150,97,0.65) 0%, rgba(29, 57, 83, 1) 100%);
+                    background-image: linear-gradient(-180deg, #0D5B4B 0%, #021745 100%);
+                }
+                &:last-child {
+                    border-bottom: 0;
+                }
+                td {
+                    width: 33%;
+                    text-align: center;
+                    font-family: DINEngschrift-Alternate;
+                    &:first-child {
+                        font-family: PingFangSC-Regular;
+                        width: 40%;
+                        text-align: left;
+                        padding-left: 5%;
+                        font-size: 14px;
+                    }
+                    &:last-child {
+                        padding-right: 5%;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .bs-b {
+        font-family: PingFangSC-Regular;
+        .china-map {
+            margin-top: 10%;
+            width: 100%;
+            height: 90%;
+            position: relative;
+            #main {
+                width: 100%;
+                height: 100%;
+            }
+            .realtime__visualbar {
+                margin-top: 0.5em;
+                width: 1em;
+                height: 5em;
+                border-radius: 0.5em;
+                background: linear-gradient(to bottom, #ffeb3b, #032A3E);
+                position: absolute;
+                bottom: 20%;
+                left: 10%;
+                &::before, &::after {
+                    position: absolute;
+                    content: '高';
+                    left: 0;
+                    top: 0;
+                    white-space: nowrap;
+                    margin-left: 2em;
+                }
+                &::after {
+                    content: '低';
+                    top: auto;
+                    bottom: 0;
+                }
+            } 
+        }
+        
+        .top5 {
+            height: 100%;
+            .top5-title {
+                font-family: PingFangSC-Semibold;
+                font-size: 14px;
+                line-height: 12px;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                width: 100%;
+                padding: 20px;
+                display: flex;
+                justify-content: space-between;
+                .top5-title-r {
+                    width: 86px;
+                    height: 22px;
+                    overflow: hidden;
+                    border: 1px solid rgba(255,255,255,0.50);
+                    border-radius: 2px;
+                    font-size: 0;
+                    span {
+                        display: inline-block;
+                        height: 100%;
+                        line-height: 22px;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 13px;
+                        cursor: pointer;
+                    } 
+                    .active {
+                        background: #27A6F6;
+                        color: #01122B;
+                    }
+                }
+            }
+            .top5-list {
+                height: 90%;
+                padding: 0 20px;
+                border-collapse: collapse;
+                table-layout: auto;
+                font-family: PingFangSC-Regular;
+                .top5-common {
+                    width: 100%;
+                    height: 18%;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    &:first-child {
+                        color: #CDD8E5;
+                        height: 5%;
+                    }
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    
+                    .top5-common-l {
+                        height: 100%;
+                        display: flex;
+                        align-items: center;
+                        // justify-content: center;
+                        .img_group {
+                            margin-left: 10px;
+                            position: relative;
+                            margin-right: 10px;
+                            img {
+                                border-radius: 50%;
+                            }
+                            .icon-sup {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                                text-align: center;
+                                line-height: 20px;
+                                background: #5383df;
+                                position: absolute;
+                                right: -4px;
+                                top: -4px;
+                                font-style: italic;
+                            }
+                            // .img_group_icon {
+                            //     width: 24px;
+                            //     height: 24px;
+                            //     position: absolute;
+                            //     right: -4px;
+                            //     top: -4px;
+                            // }
+                           .iconbg0 {
+                                background: #b6001c;
+                            }
+                            .iconbg1 {
+                                background: #e06739;
+                            }
+                            .iconbg2 {
+                                background: #7dc400;
+                            }
+                        }  
+                        .list {
+                            .uv-num {
+                                font-family: DINEngschrift-Alternate;
+                                font-size: 15px;
+                                line-height: 13px;
+                                text-shadow: 0 1px 2px rgba(0,0,0,0.50);
+                            }
+                        }      
+                    }
+                    .top5-common-m {
+                        height: 100%;
+                        display: flex;
+                        // justify-content: center;
+                        align-items: center;
+                        font-family: DINEngschrift-Alternate;
+                        font-size: 30px;
+                        line-height: 30px;
+                        text-shadow: 0 1px 2px rgba(0,0,0,0.50);
+                    }
+                    .top5-common-r {
+                        height: 100%;
+                        display: flex;
+                        // justify-content: center;
+                        align-items: center;
+                    }
+                }
+               
+                
+            }
+        }
+       
+        
+
+        .pie-group {
+            display: flex;
+            align-items: center;
+            margin-top: 5%;
+            height: 85%;
+            padding-left: 5%;
+            .login-way {
+                padding-left: 5%;
+                font-family: PingFangSC-Regular;
+            }
+        }
+        
+        .browers-wrapper {
+            margin-top: 10%;
+            font-family: PingFangSC-Regular;
+            font-size: 12px;
+            letter-spacing: 0;
+            line-height: 12px;
+            .browers {
+                width: 49%;
+                height: 100%;
+                .brower-title {
+                    width: 100%;
+                    margin: 5px;
+                    text-align: center;
+                }
+                table {
+                    width: 100%;
+                    border-collapse: separate; 
+                    table-layout: auto;
+                    border-spacing: 16px;
+                    tr {
+                        width: 100%;
+                        .default-bar {
+                            width: 100%;
+                            background: #2d4b5a;
+                            border-radius: 5px;
+                            height: 10px;
+                            position: relative;
+                            left: 0;
+                            top: 0;
+                            .bar {
+                                position: absolute;
+                                height: 10px;
+                                border-radius: 5px;
+                                left: 0;
+                                top: 0;
+                            }
+                            .student-bar {
+                                background-image: linear-gradient(-90deg, #59D2DB 0%, #1E7EB0 100%);
+                            }
+                            .teacher-bar {
+                                background-image: linear-gradient(-90deg, #11AA78 0%, #0F8C4A 100%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+
+    }
+
+    .marginleft {
+        margin-left: -5%;
+    }
+    .font-regular {
+        font-family: PingFangSC-Regular;
+        font-size: 14px;
+    }
+    .card {
+        padding: 0;
+    }    
+    .img-width{
+        width: 20px;
+    }
+    .school-img-width {
+        width: 25px;
+        margin-left: 8px;
+    }
+    .bg {
+        background: rgba(0,0,0,0.20);
+    }
+    .height40 {
+        height: 30%;
+    }
+    .height60 {
+        height: 59%;
+    }
+    .title {
+        font-family: PingFangSC-Semibold;
+        padding: 20px 0 0 20px;
+        font-size: 14px;
+        color: #FFFFFF;
+        letter-spacing: 0;
+        line-height: 12px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.30);
+    }
+    .section-color {
+        width: 8px;
+        height: 8px;
+        background: #007BDB;
+        display: inline-block;
+        border-radius: 50%;
+        margin: 0 10px;
+    }
+    .font12 {
+        font-size: 12px;
+    }
+    .box-shadow {  
+        box-shadow: 0 1px 0px 1px #fff inset; 
+    }  
+    .center {
+        text-align: center;
+    }
+}

@@ -1,0 +1,26 @@
+.ring {
+  position: relative;
+  .ring__label {
+    z-index: 9999;
+    position: absolute;
+    color: white;
+    top: 0;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    line-height: 2em;
+    text-align: right;
+    span {
+      position: absolute;
+      left: 0;
+      right: 50%;
+      + span {
+        text-align: left;
+        left: 50%;
+        right: 0;
+        text-indent: 0.2em;
+        font-size: 20px;
+      }
+    }
+  }
+}

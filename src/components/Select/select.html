@@ -1,0 +1,35 @@
+<div class="select-wrap">
+  <span class="label">{{label}}</span>
+  <div class="select" :style="{width: size + 'em'}" tabindex="-1">
+    <div
+      @click="toggle"
+      :disabled="disabled"
+      class="select-selectbox"
+      onselectstart="return false"
+      tabindex="-1">
+      <div class="select-selectbox-inner">
+        {{showText}}
+      </div>
+      <i class="select-selectbox-icon"></i>
+    </div>
+    <div
+      ref="dropdown"
+      v-show="show"
+      @blur="hide"
+      :style="{
+        top: top
+      }"
+      class="select-dropdown"
+      tabindex="-1">
+      <ul class="select-selectbox-dropdown">
+        <li
+          v-for="(item, idx) in items"
+          @click="itemClick(item, idx)"
+          :key="idx"
+          :class="{selected: active === idx}">
+          {{item.text || item}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

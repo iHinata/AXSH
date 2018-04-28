@@ -1,0 +1,24 @@
+<div class="login">
+  <form>
+    <label row>
+      <span columns="2">账&nbsp;号:</span>
+      <div columns="10"><input type="text" v-model="name" ref="name" /></div>
+    </label>
+    <label row>
+      <span columns="2">密&nbsp;码:</span>
+      <div columns="10"><input type="password" v-model="password" @keydown.enter="submit" /></div>
+    </label>
+    <div row class="login__buttons">
+      <div columns="4" push="2">
+        <button class="button button--primary" @click="submit($event)">登录</button>
+      </div>
+      <div columns="5" push="1">
+        <button class="button" @click="reset">重置</button>
+      </div>
+    </div>
+    <p>
+      版权所有 © 江苏金智教育信息股份有限公司　保留所有权利
+    </p>
+  </form>
+  <tip v-if="show">{{message}}</tip>
+</div>

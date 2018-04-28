@@ -1,0 +1,162 @@
+@import '~sass/settings';
+@import '~sass/tools';
+@import 'breakpoint';
+.running {
+  .running__general {
+    background-image: url(~@assets/images/shield.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  .running__generaltitle {
+    font-size: $fontSizeMedium;
+    line-height: 4em;
+  }
+  .running__sub {
+    vertical-align: text-bottom;
+    font-size: $fontSizeMedium;
+  }
+  .running__days {
+    margin-bottom: 2em;
+  }
+  .running__time {
+    margin-bottom: 2em;
+  }
+  .running__num {
+    font-size: 40px;
+    margin-top: 10px;
+  }
+  .running__tablewrap {
+    height: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+  .running__table, .running__table2 {
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 1em;
+    white-space: nowrap;
+  }
+  .running__tableheader {
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    td {
+      padding-bottom: 0.5em;
+    }
+  }
+  .running__protectitem {
+    background: rgba(#34A124, .6);
+    td {
+      font-size: $fontSize;
+      padding: $fontSize * 2 0;
+      &:nth-of-type(3), &:nth-of-type(4) {
+        font-size: 40px;
+      }
+    }
+  }
+  .running__spacer {
+    td {
+      height: 0.5em;
+    }
+  }
+  .running__health {
+    .tab {
+      margin-top: 1.5em;
+    }
+    .progressgroup {
+      margin-top: 1.5em;
+      @include breakpoint(max-width 1580px) {
+        margin-top: 0;
+      }
+    }
+  }
+  .running_movetable {
+    font-size: $fontSize;
+    position: relative;
+    li {
+      text-align: left;
+      width: 100%;
+      padding: 0.3em 0;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      white-space: nowrap;
+      @include truncate;
+      span {
+        vertical-align: middle;
+      }
+    }
+  }
+  .list-leave-active {
+    transition: all 1s;
+  }
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  .list-leave-active {
+    position: absolute;
+    width: 100%;
+  }
+  .list-move {
+    transition: transform 1s;
+  }
+  .running__error {
+    color: #FF6228;
+  }
+  .running__warning {
+    color: #F8E71C;
+  }
+  .running__realtime {
+    position: relative;
+    .realtime__visual {
+      position: absolute;
+      left: 5%;
+      bottom: 10%;
+      font-size: $fontSize;
+      .realtime__visualbar {
+        margin-top: 0.5em;
+        width: 1em;
+        height: 4em;
+        border-radius: 0.5em;
+        background: linear-gradient(to top, #031B10, #00E308);
+        position: relative;
+        &::before, &::after {
+          position: absolute;
+          content: '高(100)';
+          left: 0;
+          top: 0;
+          white-space: nowrap;
+          margin-left: 2em;
+        }
+        &::after {
+          content: '低(0)';
+          top: auto;
+          bottom: 0;
+        }
+      }
+    }
+    .realtime__legend {
+      position: absolute;
+      left: 5%;
+      bottom: 10%;
+      margin-left: 6em;
+      font-size: $fontSize;
+      line-height: 2em;
+      div:nth-of-type(1)::before, div:nth-of-type(2)::before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        width: 1.2em;
+        height: 1.2em;
+        background-image: radial-gradient(circle at center, rgba(255, 11, 41, 0.4) 0, rgba(255, 11, 41, 0.4) 50%, rgba(255, 11, 41, 0.3) 50%, rgba(255, 11, 41, 0.3) 70%, rgba(255, 11, 41, 0.2) 70%, rgba(255, 11, 41, 0.2) 100%);
+        border-radius: 100%;
+        margin-right: 0.8em;
+      }
+      div:nth-of-type(2)::before {
+        background-image: radial-gradient(circle at center, rgba(226, 255, 0, 0.6) 0, rgba(158, 163, 116, 0.6) 50%, rgba(226, 255, 0, 0.3) 50%, rgba(226, 255, 0, 0.3) 70%, rgba(226, 255, 0, 0.2) 70%, rgba(226, 255, 0, 0.2) 100%);
+      }
+    }
+  }
+}

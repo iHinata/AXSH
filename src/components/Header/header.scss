@@ -1,0 +1,19 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.header {
+  padding: $paddingMedium;
+  @include clearfix;
+  * {
+    vertical-align: middle;
+    padding: 0 $paddingSmall;
+  }
+  .header__title {
+    font-size: $fontSizeLarge * 1.4;
+    border-left: 1px solid $primary;
+    // font-weight: bold;
+    color: $primary;
+  }
+  .timedisplay {
+    float: right;
+  }
+}

@@ -1,0 +1,126 @@
+@import './sass/easy';
+
+@font-face {
+    font-family: DINCondensed;
+    font-weight: normal;
+    font-style: normal;
+    src: url(~@assets/fonts/DIN_Condensed_Bold.ttf);
+}
+@font-face {
+    font-family: DINEngschrift-Alternate;
+    src: url(~@assets/fonts/DINEngschrift-Alternate.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: PingFangSC-Medium;
+    src: url(~@assets/fonts/PingFangSC-Medium.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: PingFangSC-Regular;
+    src: url(~@assets/fonts/PingFangSC-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: PingFangSC-Semibold;
+    src: url(~@assets/fonts/PingFangSC-Semibold.ttf);
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  // @include debug;
+  // background: #07233b;
+  font-size: $fontSize;
+  font-family: DINCondensed, -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
+  min-width: 72em;
+  min-height: 48em;
+}
+
+.icon {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 0.4em;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  &__student::before {
+    background-image: url(~@assets/images/student.png);
+  }
+  &__teacher::before {
+    background-image: url(~@assets/images/teacher.png);
+  }
+  &__logo::before {
+    width: 36px;
+    background-image: url(~@assets/images/logo.png);
+    background-size: 100% 100%;
+  }
+  &__school::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/school.png);
+  }
+  &__sys::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/sys.png);
+  }
+  &__home::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/home.png);
+  }
+  &__plugin::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/plugin.png);
+  }
+  &__data::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/data.png);
+  }
+  &__storage::before {
+    width: 40px;
+    height: 40px;
+    background-image: url(~@assets/images/storage.png);
+  }
+}
+.num {
+  @include gradient(#FFFFFF, #ADADAD);
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  background: #2196f3;
+  color: white;
+  padding: 0.5em 0.8em;
+  line-height: 1.4em;
+  border-radius: 1px;
+  vertical-align: middle;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,.32);
+  outline: none;
+  border: 0;
+  &:hover {
+    background: darken(#2196f3, 10%);
+  }
+  a {
+    display: block;
+    color: white;
+  }
+}

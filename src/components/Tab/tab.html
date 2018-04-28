@@ -1,0 +1,5 @@
+<div class="tab">
+  <div v-for="(t, i) in data" @click="change(i)" :key="i" :class="['tab__item', active == i ? 'tab__item--active' : '']">
+    {{t}}
+  </div>
+</div>

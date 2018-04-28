@@ -1,0 +1,47 @@
+// 元素选择器, 属性选择器
+
+// // 小型栅格系统
+@for $i from 1 through $columns {
+  [columns='#{$i}'] {
+    width: span($i);
+    float: left;
+    // margin-right: gutter();
+    margin-left: gutter();
+    &:last-child {
+      // margin-left: 0;
+    }
+  }
+  [push='#{$i}'] {
+    margin-left: span($i wider) !important;
+  }
+  [pull='#{$i}'] {
+    margin-left: 0 - span($i) !important;
+  }
+}
+
+[row] {
+  @include clearfix;
+}
+
+[debug] {
+  @include debug;
+}
+
+// list
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  margin-left: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}

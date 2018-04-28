@@ -1,0 +1,38 @@
+<div style="height: 100%;" class="index">
+  <aside>
+    <ul>
+      <li class="index__logo">
+        <div>
+          <img src="~@assets/images/icon.png" />
+          <span>安心守护</span>
+        </div>
+      </li>
+      <li class="index__user">
+        <div>
+          <img src="~@assets/images/u16.png" />
+          <span>{{user}}</span>
+        </div>
+        <div class="index__logout">
+          <span>注销</span>
+        </div>
+      </li>
+      <li v-for="(menu, idx) in menus"
+        @click="active = idx"
+        :key="menu.name"
+        :class="['index__menu', active === idx ? 'active' : '']">
+        <router-link :to="{name: menu.name}">
+          <img :src="menu.img" />
+          <span>{{menu.text}}</span>
+        </router-link>
+      </li>
+    </ul>
+  </aside>
+  <main>
+    <header>
+      <h3>{{title}}</h3>
+    </header>
+    <section>
+      <router-view />
+    </section>
+  </main>
+</div>

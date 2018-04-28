@@ -1,0 +1,106 @@
+.select-wrap {
+  display: inline-block;
+  .label {
+    vertical-align: middle;
+    font-size: 12px;
+  }
+  .select {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 40px;
+    max-width: 250px;
+    margin-right: 1em;
+    outline: none;
+    .select-selectbox {
+      position: relative;
+      height: 22px;
+      line-height: 22px;
+      padding: 0;
+      text-align: left;
+      vertical-align: middle;
+      border-radius: 3px;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #DDD;
+      border-top: 1px solid #EEE;
+      border-bottom: 1px solid #B7B7B7;
+      outline: 0 none;
+      background: #fafafa;
+      background: linear-gradient(to bottom, #fafafa 0%,#e5e5e5 100%);
+      transition: all linear 0.2s;
+      > div {
+        outline: none;
+      }
+      .select-selectbox-inner {
+        padding: 0 0 0 5px;
+        margin-right: 15px;
+        font-size: 12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      &[disabled="disabled"] {
+        color: #CCC;
+        border: 1px solid #B7B7B7;
+        cursor: default;
+        box-shadow: none;
+        opacity: .7;
+        user-select: none;
+      }
+    }
+    .select-selectbox-icon {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      margin-top: -2px;
+      border-top: 5px solid #A7A7A7;
+      border-left: 5px dashed rgba(0, 0, 0, 0);
+      border-right: 5px dashed rgba(0, 0, 0, 0);
+      border-bottom: 0 none;
+      display: block;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      line-height: 0;
+      font-size: 0;
+    }
+    .select-dropdown {
+      background: white;
+      position: absolute;
+      z-index: 1000;
+      left: 0;
+      outline: none;
+      .select-selectbox-dropdown {
+        max-height: 200px;
+        overflow-x: auto;
+        margin: 0;
+        padding: 0;
+        overflow-y: auto;
+        font-size: 12px;
+        list-style: none;
+        border: 1px solid #ccc;
+        background: #FFF;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        border: solid 1px #DCDCDC;
+        line-height: 2em;
+        li, div {
+          margin: 0;
+          padding: 0px 10px;
+          white-space: nowrap;
+          cursor: pointer;
+          color: #333;
+          background: rgba(0, 0, 0, 0);
+          outline: 0 none;
+          &:hover {
+            background: #EEE;
+          }
+          &.selected {
+            background: #3870F3;
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+}

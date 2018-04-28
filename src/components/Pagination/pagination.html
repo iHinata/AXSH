@@ -1,0 +1,27 @@
+<div class="pagination">
+  <!-- <span class="pagination__button pagination__index" :disabled="disableIndex" @click="index" title="首页"><<</span> -->
+  <button class="pagination__button pagination__index" :disabled="disableIndex" title="首页" @click="index"><<</button>
+  <button class="pagination__button pagination__prev" :disabled="disableIndex" title="上一页" @click="prev"><</button>
+  <!-- <template v-for="count in counts">
+  <span
+    @click="go(count)"
+    :key="'count' + count"
+    :class="['pagination__button', 'pagination__pos', active === count ? 'pagination__button--active' : '']">{{count}}</span>
+  <span></span>
+  </template> -->
+  <button class="pagination__button pagination__next" :disabled="disableLast" title="下一页" @click="next">></button>
+  <button class="pagination__button pagination__last" :disabled="disableLast" @click="last" title="末页">>></button>
+  &nbsp;
+  <span>{{(active-1)*size+1}}-{{active*size}}</span>
+  <span>总记录数 {{total}}</span>
+  <span>共{{pages}}页</span>
+  <span class="pagination__size">
+    <vSelect
+      v-model="size"
+      label="每页显示"
+      :size="2"
+      @change="pageSizeChange"
+      :up="true"
+      :items="[10, 20, 50, 100]" />
+  </span>
+</div>

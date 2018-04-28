@@ -1,0 +1,11 @@
+.tip {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20%;
+  color: white;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.6em 1em;
+  border-radius: 0.5em;
+}

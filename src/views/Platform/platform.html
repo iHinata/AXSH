@@ -1,0 +1,48 @@
+<div class="platform" row>
+  <div columns="6" class="u-full-height">
+    <card class="platform__cover" height="65%" title="产品覆盖地域" :date="date">
+      <map-chart height="100%" :data="area" />
+    </card>
+    <card height="35%" row :top="true">
+      <pie-chart
+        class="platform__coverratio"
+        :legendPos="{left: 'center', top: '13%'}"
+        align="left"
+        columns="5"
+        height="100%"
+        title="产品覆盖高校类型比重"
+        :data="schoolTypeCover" />
+      <bar-chart
+        class="platform__covercount"
+        columns="7"
+        height="100%"
+        title="产品覆盖高校类型数量"
+        :x="schoolTypeX"
+        :data="schoolType" />
+    </card>
+  </div>
+  <div class="platform__other u-full-height" columns="6">
+    <card class="platform__increase" height="50%" title="产品销售月增量" :date="date">
+      <line-chart
+        height="100%"
+        :color="['#6EC02B', '#34A124', '#2EA371', '#347DA3', '#0E5BB0', '#b5d831']"
+        :smooth="true"
+        :x="increaseX"
+        :data="increase" />
+    </card>
+    <div class="platform__stuff">
+      <card class="platform__approval u-mtgutter" height="100%"
+        title="产品验收情况" :date="date" :top="true">
+        <nest-ring-chart height="100%"
+          :title="'已验收\n产品占比'"
+          :data="acceptance" />
+      </card>
+      <card class="platform__version" height="100%"
+        title="产品新版占比" :date="date" :top="true">
+        <nest-ring-chart height="100%"
+          :title="'产品新版\n占比'"
+          :data="newRatio" />
+      </card>
+    </div>
+  </div>
+</div>

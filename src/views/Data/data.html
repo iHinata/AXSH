@@ -1,0 +1,98 @@
+<div class="data u-height90" row>
+  <div columns="9" class="u-full-height">
+    <card class="data__compiling" title="高校数据情况汇总" :date="new Date()" height="103.7%">
+      <div row class="u-text-center data__list u-mtgutter">
+        <div columns="2">
+          <div>
+            <i class="icon icon__school"></i>
+            <span class="num">{{schoolNum}}</span>
+          </div>
+          <div>涉及学校（个）</div>
+        </div>
+        <div columns="2">
+          <div>
+            <i class="icon icon__sys"></i>
+            <span class="num">{{sysNum}}</span>
+          </div>
+          <div>集成系统数（个）</div>
+        </div>
+        <div columns="2">
+          <div>
+            <i class="icon icon__home"></i>
+            <span class="num">{{factoryNum}}</span>
+          </div>
+          <div>集成厂家数（个）</div>
+        </div>
+        <div columns="2">
+          <div>
+            <i class="icon icon__plugin"></i>
+            <span class="num">{{apiNum}}</span>
+          </div>
+          <div>集成接口数（个）</div>
+        </div>
+        <div columns="2">
+          <div>
+            <i class="icon icon__data"></i>
+            <span class="num">{{totalNum}}</span>
+          </div>
+          <div>数据总量（万条）</div>
+        </div>
+        <div columns="2">
+          <div>
+            <i class="icon icon__storage"></i>
+            <span class="num">{{totalSpace}}</span>
+          </div>
+          <div>总存储空间（GB）</div>
+        </div>
+      </div>
+      <bar-chart
+        class="platform__covercount"
+        height="80%"
+        title="近30天数据吞吐量与每日新增记录数"
+        :titleY="40"
+        :fontSize="24"
+        yName="新增数据数(条)"
+        :legend="[{name: '新增记录数', icon: 'circle'}, {name: '数据吞肚量'}]"
+        :x="last30DaysX"
+        :color="['#34BEDB', '#FB7643']"
+        :data="[
+          {value:last30Days1, name:'新增记录数', type: 'bar'},
+          {value:last30Days2, name:'数据吞肚量', type: 'line'}
+        ]" />
+    </card>
+  </div>
+  <div columns="3" class="u-full-height">
+    <card title="核心业务数据接入占比" :date="date" height="33.333%">
+      <pie-chart height="100%"
+        :color="['#5E18D5', '#2564C1','#48A739', '#DA5622', '#B49B11', '#1DB88F', '#B35D10', '#E01010', '#A6158D', '#727272']"
+        :legendPos="{right: 0, left: 'auto', top: 'center'}"
+        :col="2"
+        :fontSize="20"
+        :radius="['40%', '80%']"
+        :center="['30%', '50%']"
+        :data="coreBusiAccess" />
+    </card>
+    <card title="数据有效情况" :date="date" height="33.333%" :top="true" row>
+      <pie-chart height="100%"
+        columns="6"
+        :color="['#48A739', '#DA5622']"
+        :legendPos="{bottom: 0, top: 'auto'}"
+        :fontSize="20"
+        :radius="['40%', '80%']"
+        :centerText="['代码标准\n对标占比']"
+        :data="codeValidate" />
+      <pie-chart height="100%"
+        columns="6"
+        :color="['#B49B11', '#2564C1']"
+        :legendPos="{bottom: 0, top: 'auto'}"
+        :fontSize="20"
+        :radius="['40%', '80%']"
+        :centerText="['业务表\n占比']"
+        :data="busiValidate" />
+    </card>
+    <card title="使用频率Top5 数据接口(次/天)" :date="date" height="33.333%" :top="true">
+      <progress-bar-group :data="top5" />
+      <progress-bar-group :data="top5" />
+    </card>
+  </div>
+</div>

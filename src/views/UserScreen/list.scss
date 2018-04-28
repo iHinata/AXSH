@@ -1,0 +1,161 @@
+.datamap {
+  padding-top: 1.5em;
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .column {
+    flex: 1 0 30%;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .card{
+    margin-bottom: 1.5em;
+    font-size: 14px;
+    width: 90%;
+    position: relative;
+    user-select: none;
+    transition: all 0.5s ease-in-out;
+    transform-origin: 50% 50%;
+    transform: perspective(800px) rotateX(0);
+  }
+  .column:hover .card:not(.noAni) {
+    transform: perspective(800px) rotateX(180deg);
+  }
+  .column:hover .card:not(.noAni) .face {
+    opacity: 0;
+  }
+  .card .face img {
+    width: 4em;
+  }
+  .card .face div {
+    margin-top: 1em;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+  }
+  .column:hover .card .back {
+    opacity: 1;
+  }
+  .card .face {
+    box-sizing: border-box;
+    height: 13em;
+    padding: 4em;
+    color: white;
+    transform-origin: 50% 50%;
+    transform: perspective(800px) rotateX(0);
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    /* backface-visibility: hidden; */
+  }
+  .card .back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform-origin: 50% 50%;
+    transform: perspective(800px) rotateX(180deg);
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    /* backface-visibility: hidden; */
+  }
+  .card .back  img {
+    width: 100%;
+    height: 100%;
+  }
+  .card .back a {
+    position: absolute;
+    text-decoration: none;
+    border: none;
+    opacity: 0.8;
+    color: white;
+    font-size: 20px;
+    height: 2em;
+    line-height: 2em;
+    display: inline-block;
+    width: 6em;
+    text-align: center;
+    border-radius: 20px;
+    outline: none;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+  .card.gaikuang .face {
+    background: #4e92df;
+  }
+  .card.gaikuang .back a {
+    background: #4e92df;
+  }
+  .card.gaikuang .back a:hover {
+    background: #4e52df;
+  }
+  .card.fanghu .face {
+    background: #81d135;
+  }
+  .card.fanghu .back a {
+    background: #81d135;
+  }
+  .card.fanghu .back a:hover {
+    background: #819135;
+  }
+  .card.jk .face {
+    background: #f9764b;
+  }
+  .card.jk .back a {
+    background: #f9764b;
+  }
+  .card.jk .back a:hover {
+    background: #f9364b;
+  }
+  .card.bb .face {
+    background: #f3a536;
+  }
+  .card.bb .back a {
+    background: #f3a536;
+  }
+  .card.bb .back a:hover {
+    background: #f36536;
+  }
+  .card.app-jk .face {
+    background: #f3a536;
+  }
+  .card.app-jk .back a {
+    background: #f3a536;
+  }
+  .card.app-jk .back a:hover {
+    background: #f36536;
+  }
+
+  .card.secure .face {
+    background: #9C55E8;
+  }
+  .card.secure .back a {
+    background: #9C55E8;
+  }
+  .card.secure .back a:hover {
+    background: #9C55E8;
+  }
+
+  .noAni .face {
+    background: #dcdcdc;
+    color: #848484 !important;
+  }
+  .noAni .face b {
+    text-align: center;
+    text-indent: 0.5em;
+    font-size: 4em;
+    line-height: 0.5em;
+  }
+  .noAni .face div {
+    font-size: 1em;
+    margin-top: 2em;
+  }
+}

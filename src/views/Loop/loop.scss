@@ -1,0 +1,17 @@
+@import '~sass/settings';
+
+.loop {
+  height: 100%;
+  overflow: hidden;
+  background: url(~@assets/images/bg.png);
+  // padding: gutter();
+}
+.fade-enter-active {
+  transition: all 1s ease;
+}
+.fade-leave-active {
+  transition: all 1s ease;
+}
+.fade-leave-to {
+  opacity: 0;
+}

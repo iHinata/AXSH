@@ -1,0 +1,6 @@
+<div :style="{height: height}" class="ring">
+  <div class="ring__label">
+    <div v-for="label in data" :style="{height: radius+'%'}"><span>{{label.name}}</span><span>{{label.value}}%</span></div>
+  </div>
+  <chart height="100%" :options="options" :not-merge="notMerge" />
+</div>

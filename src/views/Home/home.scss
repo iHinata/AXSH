@@ -1,0 +1,84 @@
+@import '~sass/_settings';
+@import '~sass/tools';
+.home {
+  @include clearfix;
+  font-size: 0;
+  height: 100%;
+  color: $primary;
+  white-space: nowrap;
+  &::before {
+    content: '';
+    display: inline-block;
+    visibility: hidden;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+  }
+  .banner, .list {
+    font-size: $fontSize;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: gutter();
+  }
+  .banner {
+    width: span(5);
+    img {
+      width: 100%;
+    }
+  }
+  .list {
+    width: span(7);
+    > div:first-child {
+      margin-top: 2em;
+    }
+    > div + div {
+      margin-top: 4em;
+    }
+    section {
+      position: relative;
+      &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: $paddingMedium;
+        // bottom: $paddingMedium;
+        height: 200px;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      header {
+        span {
+          font-size: $fontSizeMedium;
+          line-height: 1em;
+          vertical-align: baseline;
+        }
+        sub {
+          font-size: $fontSize;
+          line-height: 1em;
+          vertical-align: bottom;
+        }
+      }
+      > .num {
+        @include gradient(#23D311, #085692);
+        font-size: $fontSizeLarge * 4.5;
+        line-height: 1.5em;
+      }
+      > div .num {
+        font-size: $fontSizeLarge * 1.8;
+        line-height: 1.5em;
+      }
+      .home__apps {
+        > div {
+          @include clearfix;
+          + div {
+            margin-top: 1em;
+          }
+        }
+        span {
+          background: rgba(0,0,0,0.30);
+          border-radius: 0.2em;
+          padding: 0.5em;
+        }
+      }
+    }
+  }
+}

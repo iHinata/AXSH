@@ -1,0 +1,9 @@
+<nav class="navi">
+  <ul>
+    <li v-for="menu in data" :key="'menu' + menu.name">
+      <router-link :to="{name: menu.name}">
+        {{menu.text}}
+      </router-link>
+    </li>
+  </ul>
+</nav>

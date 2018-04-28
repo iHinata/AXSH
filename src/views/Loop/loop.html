@@ -1,0 +1,13 @@
+<div class="loop">
+  <navi />
+  <v-header :title="title" v-if="showHeader" />
+    <transition name="fade">
+      <keep-alive>
+        <home v-if="index === 0" />
+        <platform v-if="index === 1" />
+        <running v-if="index === 2" />
+        <v-data v-if="index === 3" />
+        <apps v-if="index === 4" />
+      </keep-alive>
+    </transition>
+</div>

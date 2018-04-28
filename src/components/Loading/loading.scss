@@ -1,0 +1,47 @@
+.loading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  & .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: 0 auto;
+    margin-left: -50px;
+    width: 100px;
+    text-align: center;
+    & > div {
+      width: 30px;
+      height: 30px;
+      background-color: #67CF22;
+      border-radius: 50%;
+      display: inline-block;
+      animation: bouncedelay 1.4s infinite ease-in-out;
+      animation-fill-mode: both;
+    }
+    & .bounce1 {
+      animation-delay: -0.32s;
+    }
+    & .bounce2 {
+      animation-delay: -0.16s;
+    }
+  }
+}
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+  }
+}

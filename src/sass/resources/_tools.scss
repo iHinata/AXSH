@@ -1,0 +1,97 @@
+
+// mixin function
+@mixin debug($grid: 12) {
+  background: susy-svg-grid($grid) no-repeat scroll;
+  & > * {
+    outline: 1px solid black;
+  }
+}
+// 清除浮动
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+// 流布局
+@mixin gallery(
+  $span,
+  $config: ()
+) {
+  $grid: susy-compile($span, $config);
+  $span: map-get($grid, 'span');
+  $column-count: length(map-get($grid, 'columns'));
+  $count: floor($column-count / $span);
+  $spread: map-get($grid, 'spread') + 2;
+  $container-spread: map-get($grid, 'container-spread') + 2;
+  $extra: ($container-spread - $spread) * 0.5;
+  $extra-push: su-call('su-gutter', $grid) * $extra;
+
+  float: left;
+  margin-right: -100%;
+
+  @for $n from 1 through ($count) {
+    $nth: unquote('#{$count}n + #{$n}');
+    $location: $span * ($n - 1) + 1;
+
+    &:nth-child(#{$nth}) {
+      $width: susy-compile($span at $location, $grid);
+      width: su-call('su-span', $width);
+
+      @if ($location > 1) {
+        $wide: susy-compile('first' $location - 1 'wide', $grid);
+        clear: none;
+        margin-left: su-call('su-span', $wide) + $extra-push;
+      } @else {
+        clear: both;
+        margin-left: if($extra-push > 0, $extra-push, 0);
+      }
+    }
+  }
+}
+
+@mixin radius($r: 4px) {
+  border-radius: $r;
+}
+
+@mixin triangle($dir: top, $color: #666666, $size: 5px) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    @if $dir == top {
+      margin-top: 0 - $size / 4;
+    } @else if $dir == bottom {
+      margin-top: 0 - $size * 1.25;
+    }
+    margin-left: 0 - $size / 2;
+    border: $size solid transparent;
+    border-#{$dir}-color: $color;
+  }
+}
+
+@mixin truncate($truncation-boundary: 100%) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin span($span, $config: ()) {
+  $grid: susy-compile($span, $config);
+  $span: map-get($grid, 'span');
+  $column-count: length(map-get($grid, 'columns'));
+  $gutter: map-get($grid, 'gutters');
+  width: span($span of $column-count);
+  margin-right: gutter(of $column-count);
+  float: left;
+}
+
+@mixin gradient($from: rgba(255, 255, 255, 1), $to: rgba(209, 209,209, 1)){
+  background-image: -webkit-gradient(linear, 0 0, 0 bottom, from($from), to($to));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

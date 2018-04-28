@@ -1,0 +1,243 @@
+<!-- section-top -->
+<div class="big-screen u-height90">
+    <header class="header">
+        <img class="header__logo" src="~@assets/images/schoolm-logo.png" />
+        <span class="header__title">高校应用运行监控中心</span>
+        <time-display />
+    </header>
+
+    <div class="bs-t height40">
+        <card class="school-section-bg" height="96%" columns='4'>
+            <section class='u-full-height'>
+                <div class="school-num" columns='5'>
+                    <div class="school-num-div-bg">
+                        <p class='school-num-p'>学校数
+                            <br>
+                            <span class='school-num-span'>{{ Number(school_num).toLocaleString() }}
+                                <span style='font-size: 14px;'>所</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <!-- 点击量 -->
+                <div class='click-num u-full-height' columns='7'>
+                    <div class='click-num-div'>
+                        <div class='click-num-div-t'>
+                            <img class='img-width' src="~@assets/images/schoolm-clickNum.png" alt=""> 今日总点击量
+                            <span class=' font12'> (PV)</span>
+                        </div>
+                        <num-card-group bgColor="rgba(0, 0, 0, 0.2)" :num="allPV" :count="7" />
+                    </div>
+                    <div class='click-num-div'>
+                        <div class='click-num-div-t'>
+                            <img class='img-width' src="~@assets/images/schoolm-eye.png" alt="">今日总访客数
+                            <span class=' font12'> (UV)</span>
+                        </div>
+                        <num-card-group bgColor="rgba(0, 0, 0, 0.2)" :num="allUV" :count="7" />
+                    </div>
+                </div>
+            </section>
+        </card>
+
+        <card height="96%" columns='2' style='padding: 0'>
+            <section columns='2' class='u-full-height nums'>
+                <table>
+                    <tr>
+                        <p class='nums-p'>
+                            <img class='img-width' src="~@assets/images/schoolm-app.png" alt="">应用总数</p>
+                        <div>
+                            <span class='font50'>{{ Number(all_app_num).toLocaleString() }}</span>个</div>
+                    </tr>
+                    <tr>
+                        <p class='nums-p'>
+                            <img class='img-width' src="~@assets/images/schoolm-pc.png" alt="">pc</p>
+                        <div>
+                            <span class='font36'>{{ Number(pc_app_num).toLocaleString() }}</span>个</div>
+                    </tr>
+                    <tr>
+                        <p class='nums-p'>
+                            <img class='img-width' src="~@assets/images/schoolm-mobile.png" alt="">移动</p>
+                        <div>
+                            <span class='font36'>{{ Number(mobile_app_num).toLocaleString() }}</span>个</div>
+                    </tr>
+                </table>
+            </section>
+        </card>
+
+        <card height="96%" columns='3'>
+            <section columns='3' class='u-full-height column3'>
+                <div class='title'>应用类别分布</div>
+                <pie-chart height="100%" :legendPos="{left: 'auto', right: 50, top: 'center'}" orient="vertical" :color="['#5E18D5', '#2564C1','#48A739', '#DA5622', '#B49B11', '#1DB88F', '#B35D10', '#E01010', '#A6158D', '#727272']"
+                    :fontSize="20" :radius="['40%', '70%']" :center="['35%', '50%']" :data="appCategroy" />
+            </section>
+        </card>
+
+        <card height="96%" columns='3'>
+            <section columns='3' class='u-full-height column3'>
+                <div class='title'>使用量按类别排名</div>
+                <table class='column3-table'>
+                    <tr>
+                        <td>应用类别</td>
+                        <td class='font-regular'>访问量 （PV）</td>
+                        <td class='font-regular'>访客数 （UV）</td>
+                    </tr>
+                    <tr v-for='(item, i) in appCatagoryUseStatisc' :key='i'>
+                        <td>{{ item.CATEGORY_NAME }}</td>
+                        <td>{{ Number(item.pv).toLocaleString() }}</td>
+                        <td>{{ Number(item.uv).toLocaleString() }}</td>
+                    </tr>
+                </table>
+            </section>
+        </card>
+    </div>
+
+    <div class='bs-b height60'>
+        <section columns='4' class='u-full-height bg'>
+            <div class='title'>用户活跃分布
+                <span style='font-size: 12px; opacity: 0.6;'> (近30天)</span>
+            </div>
+            <div class='china-map'>
+                <map-chart height="100%" :data="area" :color="['#032A3E', '#ffeb3b']" :showVisual='false' />
+                <div class='realtime__visualbar'></div>
+            </div>
+        </section>
+        <section columns='5' class='u-full-height bg top5'>
+            <div class='top5-title'>
+                <div class='top5-title-l'>使用最好应用Top5</div>
+            </div>
+
+            <div class="top5">
+                <div class='top5-list ' columns='6'>
+                    <div class='top5-common center'>
+                        <div columns='7'>应用概况  (PC)</div>
+                        <div columns='5'>最佳高校Top3</div>
+                    </div>
+                    <div class='top5-common' v-for='(item, i) in pcAppTop5' :key='i'>
+                        <div columns='7' class='top5-common-l'>
+                            <div class="img_group">
+                                <img :src="'http://www.campusphere.cn/appcenter_2.2/umanager/getImg144?appID=' + item.app_id + '&version=' +item.version +'&schoolID=' + item.schoolid"
+                                    alt="" width='50' height='50' />
+                                <span class='icon-sup' v-if='i==0' :class="i==0?'iconbg0':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else-if='i==1' :class="i==1?'iconbg1':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else-if='i==2' :class="i==2?'iconbg2':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else >{{ i+1 }}</span>
+                            </div>
+                            <ul class="list">
+                                <li>{{ item.APP_NAME }}</li>
+                                <li>类别: {{ item.category }}</li>
+                                <li>覆盖高校:
+                                    <span class='uv-num'>{{ item.school_num }}</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                       
+                        <div columns='5' class='top5-common-r'>
+                            <ul>
+                                <li v-for='(e,j) in item.list' :key='j' v-text="e.length>8?e.substring(0,7)+'...':e"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class='top5-list' columns='6'>
+                    <div class='top5-common center'>
+                        <div columns='7'>应用概况 (移动)</div>
+                        <div columns='5'>最佳高校Top3</div>
+                    </div>
+                    <div class='top5-common' v-for='(item, i) in mobileAppTop5' :key='i'>
+                        <div columns='7' class='top5-common-l'>
+                            <div class="img_group">
+                                <img :src="item.iconUrl" alt="" width='50' height='50' />
+                                <!-- <img :src="'/assets/icon/'+(i+1)+'.png'" class='img_group_icon'> -->
+                                <span class='icon-sup' v-if='i==0' :class="i==0?'iconbg0':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else-if='i==1' :class="i==1?'iconbg1':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else-if='i==2' :class="i==2?'iconbg2':''">{{ i+1 }}</span>
+                                <span class='icon-sup' v-else >{{ i+1 }}</span>
+                            </div>
+                            <ul class="list">
+                                <li>{{ item.app_name }}</li>
+                                <li>覆盖高校:
+                                        <span class='uv-num'>{{ item.school_num }}</span>
+                                    </li>
+                                <li>累计UV:
+                                    <span class='uv-num'>{{ item.uv }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                       
+                        <div columns='5' class='top5-common-r'>
+                            <ul>
+                                <li v-for='(ele,j) in item.list'>{{ ele }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section columns='3' class='u-full-height'>
+            <card height="41%" class='column3-card'>
+                <section class='u-full-height'>
+                    <div class='title'>常用认证方式</div>
+                    <div class='pie-group'>
+
+                        <pie-chart :show="false" height="100%" columns='4' :color="['#0083E1', '#DA5622', '#ECB045', '#eee', '#03A357']" orient="vertical"
+                            :legendPos="{ left: 0, right: 0, top: 'center'}" :fontSize="14" :radius="['60%', '95%']" :centerText="['学生']"
+                            :data="studentWay" />
+
+                        <pie-chart :show="false" height="100%" columns='4' :color="['#0083E1', '#DA5622', '#ECB045', '#eee', '#03A357']" orient="vertical"
+                            :legendPos="{ left: 0, right: 0, top: 'center'}" :fontSize="14" :radius="['60%', '95%']" :centerText="['教师']"
+                            :data="teacherWay" />
+
+                        <div columns='4' class='login-way'>
+                            <p class='font12'>
+                                <i class='section-color' style="background: #0083E1;"></i>免登陆</p>
+                            <p class='font12'>
+                                <i class='section-color' style="background: #DA5622;"></i>动态口令</p>
+                            <p class='font12'>
+                                <i class='section-color' style="background: #ECB045;"></i>手机APP</p>
+                            <p class='font12'>
+                                <i class='section-color' style="background: #eee;"></i>联合登陆</p>
+                            <p class='font12'>
+                                <i class='section-color' style="background: #03A357;"></i>账号密码</p>
+                        </div>
+                    </div>
+                </section>
+            </card>
+
+            <card height="56.5%" :top="true">
+                <section class='u-full-height'>
+                    <div class='title'>常用浏览器TOP5</div>
+                    <div class="browers-wrapper">
+                        <div class="browers" columns='6'>
+                            <div class='brower-title'>
+                                <img class='img-width' src="~@assets/images/schoolm-student.png" alt=""> 学生</div>
+                            <table>
+                                <tr v-for='(item,i) in studentUseBrowser' :key='i'>
+                                    <span>{{ item.name }}</span>
+                                    <div class='default-bar'>
+                                        <div class='student-bar bar' :style="{width: item.value + '%'}"></div>
+                                    </div>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="browers" columns='6'>
+                            <div class='brower-title'>
+                                <img class='img-width' src="~@assets/images/schoolm-teacher.png" alt=""> 教师</div>
+                            <table>
+                                <tr v-for='(item,i) in teacherUseBrowser' :key='i'>
+                                    <span>{{ item.name }}</span>
+                                    <div class='default-bar'>
+                                        <div class='teacher-bar bar' :style="{width: item.value + '%'}"></div>
+                                    </div>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </card>
+        </section>
+    </div>
+</div>

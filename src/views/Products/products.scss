@@ -1,0 +1,58 @@
+.products {
+  font-size: 16px;
+  padding: 1em;
+  // min-height: 20em;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', sans-serif;
+  // form.products__search {
+  //   font-size: 14px;
+  //   padding-bottom: 1em;
+  //   label {
+  //     vertical-align: middle;
+  //   }
+  //   input {
+  //     font-size: 14px;
+  //     height: 2em;
+  //     line-height: 2em;
+  //     width: 15em;
+  //     padding-left: 0.5em;
+  //   }
+  //   select {
+  //     font-size: 14px;
+  //     outline: none;
+  //   }
+  //   button {
+  //     background: #258ac7;
+  //     color: white;
+  //     border: 1px solid #258ac7;
+  //     cursor: pointer;
+  //     outline: none;
+  //     height: 2em;
+  //     &:hover {
+  //       background: darken(#258ac7, 10%);
+  //     }
+  //   }
+  // }
+  .products--in, .products--out {
+    display: inline-block;
+    margin-right: 1em;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      background: #32a200;
+      border-radius: 100%;
+      vertical-align: middle;
+      margin-left: 0.5em;
+    }
+  }
+  .products--out::after {
+    background: #a20000;
+  }
+  table {
+    table-layout: fixed;
+    th:last-child, td:last-child {
+      text-align: center;
+    }
+  }
+}

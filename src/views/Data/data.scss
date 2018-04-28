@@ -1,0 +1,18 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.data {
+  .data__list {
+    white-space: nowrap;
+    .num {
+      font-size: $fontSizeLarge * 2;
+      vertical-align: middle;
+    }
+  }
+  .progressgroup {
+    margin-top: 2em;
+    .progress .progress__label{
+      height: 2.6em;
+      max-height: 2.6em;
+    }
+  }
+}

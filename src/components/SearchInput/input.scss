@@ -1,0 +1,36 @@
+$padding: 1em;
+.search {
+  & .search-input {
+    display: inline-block;
+    position: relative;
+    margin-right: $padding * 0.5;
+    & .search-icon {
+      font-size: 16px;
+      position: absolute;
+      left: 0.2em;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: middle;
+      background: url(~@assets/images/search.png) no-repeat;
+      background-size: cover;
+      background-position: center center;
+      cursor: pointer;
+    }
+    & input {
+      height: 2.5em;
+      width: 20em;
+      padding: 0 $padding * 0.8;
+      padding-left: 2.5em;
+      border: 1px solid #d8dcf0;
+      border-radius: 0.2em;
+      &:focus {
+        outline: 0;
+        border-color: #2196f3;
+        box-shadow: inset 0 0 0.2em #2196f3;
+      }
+    }
+  }
+}

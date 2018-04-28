@@ -1,0 +1,21 @@
+@import '~sass/tools';
+.datalist {
+  position: relative;
+  table {
+    font-size: 12px;
+    width: 100%;
+    border-collapse: collapse;
+    th {
+      background: #f7f8fc;
+    }
+    td, th {
+      border: 1px solid #ccc;
+      text-align: left;
+      padding: 0.5em;
+      @include truncate;
+    }
+  }
+  .text-center {
+    text-align: center;
+  }
+}

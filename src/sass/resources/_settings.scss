@@ -1,0 +1,31 @@
+@import 'susy';
+@import 'plugins/svg-grid';
+// 栅格列数
+$columns: 12 !default;
+// 间隙
+$gutters: 0.1 !default;
+
+$susy: (
+  columns: susy-repeat($columns),
+  gutters: $gutters,
+  spread: 'narrow',
+  'container-spread': 'wider',
+  'svg-grid-colors': hsl(180, 50%, 80%)
+);
+
+$fontSizeSmall: 12px;
+$fontSize: 14px;
+$fontSizeMedium: 18px;
+$fontSizeLarge: 22px;
+
+$paddingSmall: 10px;
+$paddingMedium: 15px;
+$paddingLarge: 20px;
+
+$primary: white;
+$radius: 5px;
+// 响应式
+// $S: 0 768px;
+// $M: 768px 1024px;
+// $L: 1024px;
+// $SM: 0 1024px;

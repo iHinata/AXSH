@@ -1,0 +1,20 @@
+<div class="datalist">
+  <table>
+    <tr>
+      <th v-if="rownum" class="text-center" width="4%">序号</th>
+      <th v-for="col in columns" :width="col.width || 'auto'">{{col.name}}</th>
+    </tr>
+    <tr v-for="(d, idx) in data" :key="'datalist' + idx">
+      <td v-if="rownum" class="text-center">{{startRownum + idx + 1}}</td>
+      <template v-for="col in columns">
+        <td v-if="!col.render" :title="d[col.dataIndex] || ''">{{d[col.dataIndex] || ''}}</td>
+        <td v-else="col.render" v-html="col.render(d[col.dataIndex], d)"></td>
+      </template>
+    </tr>
+  </table>
+  <div style="text-align:center;line-height: 8em;border: 1px solid #ccc;border-top: 0;" v-if="total === 0">
+    暂无数据
+  </div>
+  <Loading :load="loading" />
+  <Pagination @onChange="pageChange" v-model="active" :total="total" v-if="total > 10" />
+</div>

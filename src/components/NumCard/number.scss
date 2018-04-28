@@ -1,0 +1,35 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.numcard {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  height: 85px;
+  .numcard__item {
+    font-size: 70px;
+    transition: all 1s linear;
+    // display: inline-block;
+    width: 0.8em;
+    height: 85px;
+    text-align: center;
+    border-radius: $radius;
+    overflow: hidden;
+    position: relative;
+    // margin-bottom: $radius * 2;
+    &:not(:last-child) {
+      margin-right: $radius;
+    }
+    .numcard__num {
+      @include gradient(#23D311, #085692);
+    }
+    .numcard__bg {
+      position: absolute;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+  }
+}

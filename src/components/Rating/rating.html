@@ -1,0 +1,11 @@
+<div class="rating">
+  <span v-for="i in full" :key="'full' + i">
+    <img src="~@assets/images/star_full.png" alt="*" />
+  </span>
+  <span v-if="hasHalf">
+    <img src="~@assets/images/star_half.png" alt="*" />
+  </span>
+  <span v-for="i in empty" :key="'empty' + i">
+    <img src="~@assets/images/star_none.png" alt="*" />
+  </span>
+</div>

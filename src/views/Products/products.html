@@ -1,0 +1,43 @@
+<section class="products">
+  <!-- <navi :data="menus" /> -->
+  <div class="products__search">
+    <SearchInput placeholder="学校名称" @search="search" />
+    <div style="margin: 1em 0;">
+      <vSelect
+        label="请选择产品"
+        :size="7"
+        @change="item => productName = item.value"
+        :items="pts" />
+      <vSelect
+        v-show="productName === '应用管理平台'"
+        label="平台定位"
+        :size="4"
+        @change="item => version = item.value"
+        :items="versions" />
+      <vSelect
+        label="项目状态"
+        :size="4"
+        @change="item => state = item.value"
+        :items="states" />
+      <vSelect
+        label="运行数据"
+        :size="4"
+        @change="item => access = item.value"
+        :items="accesses" />
+      <vSelect
+        v-show="productName === '应用管理平台'"
+        label="用户行为"
+        :size="4"
+        @change="item => useraction = item.value"
+        :items="accesses" />
+    </div>
+  </div>
+  <list
+    v-model="page"
+    :loading="loading"
+    @onChange="pageChange"
+    :columns="columns"
+    :data="data"
+    :total="total"
+  />
+</section>

@@ -1,0 +1,107 @@
+@import '~sass/tools';
+.index {
+  aside {
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3.4em;
+    background: url(~@assets/images/bitmap.jpg) no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    transition: all 0.2s;
+    &:hover {
+      cursor: pointer;
+      width: 16em !important;
+    }
+    ul {
+      min-width: 6em;
+    }
+    ul li {
+      white-space: nowrap;
+      border-left: 0.2em solid transparent;
+      color: white;
+      @include truncate;
+      &.index__logo {
+        cursor: default;
+        img {
+          height: 1.5em;
+          vertical-align: middle;
+        }
+        span {
+          font-size: 1.5em;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+      &.index__user {
+        border-top: 1px solid rgba(255, 255, 255, .2);
+        border-bottom: 1px solid rgba(255, 255, 255, .2);
+        display: flex;
+        align-items: stretch;
+        cursor: default;
+        > div {
+          padding: 0.5em;
+          flex: 1 0 0;
+          min-width: 8em;
+        }
+        .index__logout {
+          cursor: pointer;
+          border-left: 1px solid rgba(255, 255, 255, .2);
+          text-align: right;
+          &::before {
+            content: '';
+            display: inline-block;
+            height: 2em;
+            width: 1px;
+            vertical-align: middle;
+            visibility: hidden;
+          }
+          span {
+            display: inline-block;
+            vertical-align: middle;
+            padding-right: 0.5em;
+          }
+        }
+      }
+      &.active, &.index__menu:hover {
+        border-left-color: #4695ff;
+        background: rgba(70, 149, 255, 0.4);
+      }
+      a, > div {
+        display: block;
+        color: white;
+        padding: 0.8em 0.5em;
+      }
+      img {
+        width: 2em;
+        height: 2em;
+        margin-right: 0.6em;
+      }
+    }
+  }
+  main {
+    margin-left: 3.4em;
+    overflow-y: auto;
+    height: 100%;
+    > header {
+      color: #bbb;
+      font-weight: bold;
+      padding-left: 1em;
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+      h3 {
+        margin: 0;
+        padding: 0.6em 0;
+      }
+    }
+    > section {
+      margin: 1em;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+      border-radius: 0.3em;
+    }
+  }
+}

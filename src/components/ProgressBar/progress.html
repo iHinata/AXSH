@@ -1,0 +1,13 @@
+<tr class="progress">
+  <td class="progress__label" align="right" width="30%">
+    {{data.name}}
+  </td>
+  <td class="progress__chart">
+    <div class="progress__bar">
+      <div class="progress__item" :style="{width: data.value + '%'}"></div>
+    </div>
+  </td>
+  <td class="progress__num" width="5%">
+    {{data.label || data.value}}
+  </td>
+</tr>

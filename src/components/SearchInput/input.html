@@ -1,0 +1,9 @@
+ <div class="search">
+  <span class="search-input">
+    <i class="search-icon" @click="search"></i>
+    <input @keyup.enter="search" v-model="key" :placeholder="placeholder" type="text" />
+  </span>
+  <button type="button" class="button" @click="search">
+    搜索
+  </button>
+</div>

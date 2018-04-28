@@ -1,0 +1,219 @@
+<div class="apps u-height90" row>
+    <div columns="3" class="u-full-height">
+        <card class="apps__compiling" title="应用建设统计" :date="date" height="40%">
+            <table class="apps__numbers">
+                <tr>
+                    <td rowspan="2" colspan="2">
+                        <div class="num apps__schoolnum">{{schoolTotal}}</div>
+                        <div>学校总数量（个）</div>
+                    </td>
+                    <td>
+                        <div class="num apps__appnum">{{appTotal}}</div>
+                        <div>应用总数</div>
+                    </td>
+                    <td>
+                        <div class="num apps__appaddnum">{{appIncrease}}</div>
+                        <div>本周新增应用数</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="num apps__pcnum">{{pcAppTotal}}</div>
+                        <div>PC应用数</div>
+                    </td>
+                    <td>
+                        <div class="num apps__mobilenum">{{mobileAppTotal}}</div>
+                        <div>移动应用数</div>
+                    </td>
+                </tr>
+            </table>
+        </card>
+        <card title="应用分类统计TOP10" :date="date" height="40%" :top="true">
+            <pie-chart height="100%" :legendPos="{right: 0, left: 'auto', top: 'center'}" orient="vertical" :color="['#5E18D5', '#2564C1','#48A739', '#DA5622', '#B49B11', '#1DB88F', '#B35D10', '#E01010', '#A6158D', '#727272']"
+                :fontSize="20" :radius="['40%', '80%']" :center="['35%', '50%']" :data="appCategories" />
+        </card>
+        <card title="月均使用应用次数" :date="date" height="20%" :top="true">
+            <table class="apps__usecount">
+                <tr>
+                    <td class="apps__usestudent">
+                        <img src="~@assets/images/student_white.png" />
+                        <div>
+                            学生
+                        </div>
+                    </td>
+                    <td>
+                        <div>现有</div>
+                        <div class="num">{{studentUseTimes}}</div>
+                    </td>
+                    <td>
+                        <div>建议</div>
+                        <div class="num">{{studentSuggestTimes}}</div>
+                    </td>
+                    <td class="apps__useteacher">
+                        <img src="~@assets/images/teacher_white.png" />
+                        <div>老师</div>
+                    </td>
+                    <td>
+                        <div>现有</div>
+                        <div class="num">{{teacherUseTimes}}</div>
+                    </td>
+                    <td>
+                        <div>建议</div>
+                        <div class="num">{{teacherSuggestTimes}}</div>
+                    </td>
+                </tr>
+            </table>
+        </card>
+    </div>
+    <div columns="7" class="u-full-height">
+        <card title="校园应用统计" height="50.9%">
+            <table class="apps__schooltotal">
+                <tr class="apps__title">
+                    <td width="10%"></td>
+                    <td>今日总点击量（PV）</td>
+                    <td>今日活跃用户数（UV）</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="~@assets/images/student.png" />
+                        <span class="apps__student">学生</span>
+                    </td>
+                    <td>
+                        <num-card-group bgColor="rgba(0, 255, 38, 0.4)" :num="studentAccessPV" :count="7" />
+                    </td>
+                    <td>
+                        <num-card-group bgColor="rgba(0, 255, 38, 0.4)" :num="studentAccessUV" :count="6" />
+                    </td>
+                </tr>
+                <tr class="apps__teacheritem">
+                    <td>
+                        <img src="~@assets/images/teacher_blue.png" />
+                        <span class="apps__teacher">老师</span>
+                    </td>
+                    <td>
+                        <num-card-group bgColor="rgba(27, 163, 255, 0.4)" :num="teacherAccessPV" :count="7" />
+                    </td>
+                    <td>
+                        <num-card-group bgColor="rgba(27, 163, 255, 0.4)" :num="teacherAccessUV" :count="6" />
+                    </td>
+                </tr>
+            </table>
+        </card>
+        <card title="学校排名（近7天）" :date="date" height="50.9%" :top="true">
+            <table class="app_hottable">
+                <caption class="app_hotlegend">
+                    <span>
+                        <img src="~@assets/images/app_green.png" />
+                        <span>建设应用总数</span>
+                    </span>
+                    <span>
+                        <img src="~@assets/images/percent.png" />
+                        <span>核心应用总数</span>
+                    </span>
+                    <span>
+                        <img src="~@assets/images/student.png" />
+                        <span>参与学生数</span>
+                    </span>
+                    <span>
+                        <img src="~@assets/images/teacher.png" />
+                        <span>参与老师数</span>
+                    </span>
+                </caption>
+                <tr>
+                    <td v-for="school in schoolTop5" :key="school.school_id">
+                        <img width="60" height="60" :src="'http://116.62.162.198:8080/appsummary/' + school.school_id + '.jpg'" alt="" />
+                        <div class="app__hotschool">{{school.SCHOOL_NAME}}</div>
+                        <div>
+                            <img src="~@assets/images/app_green.png" />
+                            <span>{{school.app_num}}</span>
+                        </div>
+                        <div>
+                            <img src="~@assets/images/percent.png" />
+                            <span>{{school.core_app_num}}</span>
+                        </div>
+                        <div>
+                            <img src="~@assets/images/student.png" />
+                            <span>{{school.s_uv}}</span>
+                        </div>
+                        <div>
+                            <img src="~@assets/images/teacher.png" />
+                            <span>{{school.t_uv}}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </card>
+    </div>
+    <div columns="2" class="u-full-height">
+        <card title="高频建设应用Top5" :date="date" height="60.9%">
+            <table class="app__rebuild">
+                <tr>
+                    <td width="25%"></td>
+                    <td align="left">
+                        应用名称
+                    </td>
+                    <td>
+                        覆盖高校数
+                    </td>
+                </tr>
+                <tr v-for="(app, idx) in appTop5" :key="'appTop5' + idx" class="app__rebuilditem">
+                    <td align="left">
+                        <div class="app__rebuildicon">
+                            <img :src="'http://www.campusphere.cn/appcenter_2.2/umanager/getImg144?appID=' + app.app_id + '&version=' + app.version +'&schoolID=' + app.schoolid"
+                                alt="" width="50" height="50" />
+                            <sup>{{idx + 1}}</sup>
+                        </div>
+                    </td>
+                    <td align="left">
+                        <div class="app__name">{{ app.APP_NAME }}</div>
+                        <div>累计PV: {{ app.pv }}</div>
+                        <div>累计UV: {{ app.uv }}</div>
+                    </td>
+                    <td class="num">{{ app.school_num }}</td>
+                </tr>
+            </table>
+        </card>
+        <card title="高评价应用" :date="date" height="40.9%" :top="true">
+            <div class="apps__highscore">
+                <div class="apps__icon">
+                    <sup>
+                        <img src="~@assets/images/fire.png" />
+                    </sup>
+                    <img alt="" width="70" height="70" :src="highScoreApp ? 'http://www.campusphere.cn/appcenter_2.2/umanager/getImg144?appID=' + highScoreApp.app_id + '&version=' + highScoreApp.VERSION +'&schoolID=' + highScoreApp.schoolid : ''"
+                    />
+                </div>
+                <div class="apps__item">
+                    <div>{{highScoreApp && highScoreApp.APP_NAME}}</div>
+                    <div>{{highScoreApp && highScoreApp.CATEGORY_NAME}}</div>
+                    <div>
+                        <rating :num="highScoreApp ? highScoreApp.avg_score : 0" />
+                        <span>{{highScoreApp && highScoreApp.avg_score}} 分</span>
+                    </div>
+                </div>
+            </div>
+            <div class="apps__pvuv" row>
+                <div columns="6">
+                    <div>累计点击量 (PV)</div>
+                    <div class="num">{{pvuv.pv}}</div>
+                </div>
+                <div columns="6">
+                    <div>累计访客数 (UV)</div>
+                    <div class="num">{{pvuv.uv}}</div>
+                </div>
+            </div>
+            <transition-group tag="div" name="list" class="apps__comments">
+                <div class="apps__comment" v-for="(currentCommet, idx) in showCommet" :key="currentCommet.wid + currentCommet.assess_time + Math.random()">
+                    <div class="apps__usericon">
+                        <img alt="" width="30" height="30" src="http://placehold.it/30" />
+                    </div>
+                    <div class="apps__commentcontent">
+                        <div>匿名用户</div>
+                        <div>
+                            {{currentCommet && currentCommet.assessment}}
+                        </div>
+                    </div>
+                </div>
+            </transition-group>
+        </card>
+    </div>
+</div>

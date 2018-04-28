@@ -1,0 +1,32 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.navi {
+  position: fixed;
+  left: 0;
+  top: $paddingLarge;
+  bottom: 0;
+  height: $paddingLarge * 2;
+  overflow: hidden;
+  background: darkslategray;
+  transition: all 0.2s linear;
+  width: $paddingSmall;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  &:hover {
+    top: 0;
+    height: auto;
+    border-radius: 0;
+    width: 10em;
+  }
+  ul li {
+    padding: $paddingSmall / 2 $paddingSmall;
+    cursor: pointer;
+    white-space: nowrap;
+    a {
+      color: white;
+    }
+    &:hover {
+      background: darken(darkslategray, 10%);
+    }
+  }
+}

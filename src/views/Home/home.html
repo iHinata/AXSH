@@ -1,0 +1,128 @@
+<section class="home">
+    <div class="banner">
+        <video src="http://116.62.162.198:8080/axsh.mov" width="800" height="600" autoplay loop preload="auto">
+            你的浏览器不支持
+            <code>video</code> 标签.
+        </video>
+        <!-- <img src="http://placehold.it/800X600?text=Cool" /> -->
+    </div>
+    <div class="list">
+        <div row class="u-text-center">
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>服务学校总数</span>
+                        <sub>（所）</sub>
+                    </div>
+                </header>
+                <div class="num">{{schoolTotal}}</div>
+                <div>
+                    <div>本周新增</div>
+                    <div class="num">{{newSchoolTotal}}</div>
+                </div>
+            </section>
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>服务用户总数</span>
+                        <sub>（个）</sub>
+                    </div>
+                </header>
+                <div class="num">{{useTotal}}</div>
+                <div row>
+                    <div columns="4" push="2">
+                        <div>
+                            <i class="icon icon__student"></i>学生</div>
+                        <div class="num">{{studentUseNum}}</div>
+                    </div>
+                    <div columns="4">
+                        <div>
+                            <i class="icon icon__teacher"></i>老师</div>
+                        <div class="num">{{teacherUseNum}}</div>
+                    </div>
+                </div>
+            </section>
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>今日活跃用户数</span>
+                        <sub>（个）</sub>
+                    </div>
+                </header>
+                <div class="num">{{todayActive}}</div>
+                <div row>
+                    <div columns="4" push="2">
+                        <div>
+                            <i class="icon icon__student"></i>学生</div>
+                        <div class="num">{{todayActiveStudent}}</div>
+                    </div>
+                    <div columns="4">
+                        <div>
+                            <i class="icon icon__teacher"></i>老师</div>
+                        <div class="num">{{todayActiveTeacher}}</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div row class="u-text-center">
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>提供平台产品数</span>
+                        <sub>（个）</sub>
+                    </div>
+                </header>
+                <div class="num">6</div>
+                <div class="home__apps">
+                    <div>
+                        <span>主数据管理</span>
+                        <span>能力开放</span>
+                        <span>统一身份认证</span>
+                    </div>
+                    <div>
+                        <span>自助服务</span>
+                        <span>应用管理</span>
+                        <span>安心守护平台</span>
+                    </div>
+                </div>
+            </section>
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>提供应用总数</span>
+                        <sub>（个）</sub>
+                    </div>
+                </header>
+                <div class="num">{{appTotal}}</div>
+                <div row>
+                    <div columns="4">
+                        <div>
+                            <i class="icon icon__logo"></i>金智</div>
+                        <div class="num">{{appInNum}}</div>
+                    </div>
+                    <div columns="4">
+                        <div>外部开发者</div>
+                        <div class="num">{{appOutNum}}</div>
+                    </div>
+                    <div columns="4">
+                        <div>本周新增</div>
+                        <div class="num">{{appIncreaseNum}}</div>
+                    </div>
+                </div>
+            </section>
+            <section columns="4">
+                <header>
+                    <div>
+                        <span>外部开发者数</span>
+                        <sub>（个）</sub>
+                    </div>
+                </header>
+                <div class="num">{{outDevNum}}</div>
+                <div>
+                    <div>本周新增</div>
+                    <div class="num">{{outDevIncreaseNum}}</div>
+                </div>
+            </section>
+        </div>
+    </div>
+</section>

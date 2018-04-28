@@ -1,0 +1,33 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.card {
+  background: rgba(6,13,27,0.30);
+  color: white;
+  padding: $paddingLarge;
+  overflow: hidden;
+  .card__header {
+    color: $primary;
+    // padding: 0.2em;
+    h2 {
+      @include gradient(#FFFFFF, #D1D1D1);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.30);
+      font-size: $fontSizeMedium;
+      text-align: left;
+      // font-weight: normal;
+      line-height: 1.4em;
+      margin: 0;
+      margin-left: 0.5em;
+      // padding: $paddingSmall 0;
+    }
+    time {
+      font-size: $fontSize;
+      float: right;
+      line-height: $fontSizeMedium * 1.4;
+    }
+  }
+  .card__content {
+    height: 100%;
+    margin-top: 0 - $fontSizeMedium - 0.2 * $fontSizeMedium;
+    padding-top: $fontSizeMedium + 0.2 * $fontSizeMedium;
+  }
+}

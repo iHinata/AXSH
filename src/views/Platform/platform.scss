@@ -1,0 +1,18 @@
+@import '~sass/settings';
+@import '~sass/tools';
+.platform {
+  height: 90%;
+  .platform__stuff {
+    @include clearfix();
+    height: 50%;
+    .platform__approval {
+      float: left;
+      width: span(6 wide);
+    }
+    .platform__version {
+      float: right;
+      width: span(6);
+      margin-left: gutter();
+    }
+  }
+}

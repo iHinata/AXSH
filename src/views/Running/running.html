@@ -1,0 +1,125 @@
+<div class="running u-height90" row>
+  <div columns="3" class="u-full-height">
+    <card title="运行概况" :date="date" height="50%" class="u-text-center running__general">
+      <div class="running__generaltitle">安心守护已运行</div>
+      <div class="u-text-center running__days">
+        <num-card-group :num="runningTime.days" :count="4" />
+        <sub class="running__sub">天</sub>
+      </div>
+      <div class="running__time">
+        <num-card-group :num="runningTime.hours" :count="2" />
+        <sub class="running__sub">时</sub>
+        <num-card-group :num="runningTime.minutes" :count="2" />
+        <sub class="running__sub">分</sub>
+      </div>
+      <div row>
+        <div columns="4">
+          <div>累计学校（所）</div>
+          <div class="running__num">{{axUserCount}}</div>
+        </div>
+        <div columns="5">
+          <div>目前守护学校（所）</div>
+          <div class="running__num">{{userCount}}</div>
+        </div>
+        <div columns="3">
+          <div>本周新增（所）</div>
+          <div class="running__num">+{{userCountThisWeekend}}</div>
+        </div>
+      </div>
+    </card>
+    <card title="守护对象" :date="date" height="50%" :top="true">
+      <table class="running__table">
+        <tr class="running__tableheader">
+          <td></td>
+          <td>对象</td>
+          <td>上周基数(个)</td>
+          <td>本周新增(个)</td>
+        </tr>
+        <tr class="running__spacer"><td colspan="4"></td></tr>
+        <tr class="running__protectitem">
+          <td>
+            <img width="29px" height="29px" src="~@assets/images/app.png" />
+          </td>
+          <td>应用</td>
+          <td>{{appCount}}</td>
+          <td>+{{appCountThisWeek}}</td>
+        </tr>
+        <tr class="running__spacer"><td colspan="4"></td></tr>
+        <tr class="running__protectitem">
+          <td>
+            <img width="29px" height="29px" src="~@assets/images/server.png" />
+          </td>
+          <td>服务器</td>
+          <td>{{hostCount}}</td>
+          <td>+{{hostCountThisWeek}}</td>
+        </tr>
+        <tr class="running__spacer"><td colspan="4"></td></tr>
+        <tr class="running__protectitem">
+          <td>
+            <img width="29px" height="29px" src="~@assets/images/database.png" />
+          </td>
+          <td>数据库</td>
+          <td>{{dbCount}}</td>
+          <td>+{{dbCountThisWeek}}</td>
+        </tr>
+      </table>
+    </card>
+  </div>
+  <div columns="6" class="u-full-height">
+    <card title="实时警报" height="77%" class="running__realtime">
+      <div class="realtime__visual">
+        <div>健康度</div>
+        <div class="realtime__visualbar"></div>
+      </div>
+      <div class="realtime__legend">
+        <div>安全问题</div>
+        <div>可用问题</div>
+      </div>
+      <map-chart height="100%"
+        :showVisual="false"
+        :legend="['可用问题']"
+        :data="[eventWarningAvailable]" />
+    </card>
+    <card title="待处理事件" height="23%" :top="true" :date="date">
+      <div class="running__tablewrap">
+        <img src="~@assets/images/nodata.png" v-if="!monitorShow || monitorShow.length === 0" />
+        <transition-group tag="ul" name="list" class="running_movetable" v-if="monitorShow && monitorShow.length > 0">
+            <li v-for="(m, idx) in monitorShow"
+              class="running__monitoritem"
+              :key="m.school_name + m.event_object + m.event_ascription + m.event_description + m.event_department + m.event_dealer + m.create_time">
+              <span
+                style="width: 15%;text-align: center;">
+                <span :class="[m.event_grade == '宕机' ? 'running__error' : 'running__warning']">[{{m.event_grade}}]</span>
+                <span>{{m.create_time}}</span>
+              </span>
+              <span style="width: 15%">{{m.school_name}}</span>
+              <span style="width: 10%">{{m.event_object}}</span>
+              <span style="width: 10%">{{m.event_ascription}}</span>
+              <span style="width: 35%">{{m.event_description}}</span>
+              <span style="width: 10%">{{m.event_department + m.event_dealer}}</span>
+              <span style="width: 3%">{{m.event_days}}</span>
+            </li>
+        </transition-group>
+      </div>
+    </card>
+  </div>
+  <div columns="3" class="u-full-height">
+    <card class="running__health" height="70%" title="学校健康度/分" :date="date">
+      <tab :data="['985/211', '普通高校', '高职', '中职']" v-model="healthIndex" />
+      <progress-bar-group
+        :data="health" />
+    </card>
+    <card title="事件预警/个" height="30%" :date="date" :top="true">
+      <pie-chart height="100%"
+        :legendPos="{top: 0}"
+        :showNumber="true"
+        labelPos="outside"
+        :fontSize="20"
+        :color="['#40C637', '#FD6631']"
+        :radius="['41%', '68%']"
+        :count="2"
+        :centerText="['累计故障', '今日故障']"
+        :data="eventWarning" />
+    </card>
+  </div>
+</div>
